@@ -8,62 +8,56 @@ const qrisBtn = document.getElementById("qrisBtn");
 const popupQris = document.getElementById("popupQris");
 const qrisSound = document.getElementById("qrisSound");
 
-qrisBtn.addEventListener("click", () => {
-  // mainkan SFX
-  qrisSound.currentTime = 0;
-  qrisSound.play().catch(err => {
-    console.log("Audio gagal diputar:", err);
-  });
-
-  // tampilkan popup
-  popupQris.style.display = "flex";
-  setTimeout(() => popupQris.classList.add("show"), 10);
-});
-
-/* ====== Close popups ====== */
-document.querySelectorAll(".close").forEach((btn) => {
-  btn.addEventListener("click", () => {
-    popupQris.classList.remove("show");
-    setTimeout(() => popupQris.style.display = "none", 300); // sinkron fade-out
-  });
-});
-
-window.addEventListener("click", (e) => {
-  if (e.target === popupQris) {
-    popupQris.classList.remove("show");
-    setTimeout(() => popupQris.style.display = "none", 300);
-  }
-});
-
 /* ====== Overlay ====== */
 const overlay = document.getElementById("overlay");
 
+/* ====== Open Popup ====== */
+function openPopup(popup) {
+  popup.style.display = "flex";
+  overlay.style.display = "block";
+  setTimeout(() => popup.classList.add("show"), 10);
+}
+
+/* ====== Close Popup ====== */
+function closePopup(popup) {
+  popup.classList.remove("show");
+  popup.classList.add("hide");
+  setTimeout(() => {
+    popup.style.display = "none";
+    popup.classList.remove("hide");
+    overlay.style.display = "none";
+  }, 300); // sinkron dengan CSS transition
+}
+
+/* --- Poster --- */
 poster.addEventListener("click", () => {
-  popupPoster.style.display = "flex";
   popupPosterImg.src = poster.src;
-  overlay.style.display = "block";   // <<< munculin overlay
+  openPopup(popupPoster);
 });
 
+/* --- QRIS --- */
 qrisBtn.addEventListener("click", () => {
-  popupQris.style.display = "flex";
-  overlay.style.display = "block";   // <<< munculin overlay
+  // Play SFX
+  if (qrisSound) {
+    qrisSound.currentTime = 0;
+    qrisSound.play().catch(err => console.log("Audio gagal play:", err));
+  }
+  openPopup(popupQris);
 });
 
-/* ====== Close popups ====== */
-document.querySelectorAll(".close").forEach((btn) => {
+/* --- Tombol Close (X) --- */
+document.querySelectorAll(".close").forEach(btn => {
   btn.addEventListener("click", () => {
-    popupPoster.style.display = "none";
-    popupQris.style.display = "none";
-    overlay.style.display = "none";   // <<< matiin overlay
+    const target = btn.dataset.close;
+    if (target === "poster") closePopup(popupPoster);
+    if (target === "qris") closePopup(popupQris);
   });
 });
 
-// klik di luar popup → tutup
-window.addEventListener("click", (e) => {
-  if (e.target === popupPoster || e.target === popupQris) {
-    e.target.style.display = "none";
-    overlay.style.display = "none";   // <<< matiin overlay
-  }
+/* --- Klik luar popup --- */
+window.addEventListener("click", e => {
+  if (e.target === popupPoster) closePopup(popupPoster);
+  if (e.target === popupQris) closePopup(popupQris);
 });
 
 /* ====== Reveal on Scroll ====== */
@@ -81,8 +75,7 @@ const card = document.getElementById("card3d");
 let rAF = null;
 
 function handleTilt(e){
-  // blokir ketika hover/klik tombol supaya card tidak “miring”
-  if (e.target.closest(".btn")) return;
+  if (e.target.closest(".btn")) return; // biar tombol aman
 
   const rect = card.getBoundingClientRect();
   const cx = rect.left + rect.width/2;
@@ -90,7 +83,7 @@ function handleTilt(e){
   const dx = e.clientX - cx;
   const dy = e.clientY - cy;
 
-  const max = 4; // derajat maksimal (elegan)
+  const max = 4;
   const rotY = (dx / (rect.width/2)) * max;
   const rotX = (-dy / (rect.height/2)) * max;
 
@@ -103,6 +96,7 @@ function handleTilt(e){
        0 0 ${30 + Math.abs(rotX)*2}px rgba(56,189,248,0.24)`;
   });
 }
+
 function resetTilt(){
   if (rAF) cancelAnimationFrame(rAF);
   card.style.transform = "perspective(1000px) rotateX(2.2deg)";
@@ -114,13 +108,9 @@ card.addEventListener("mousemove", handleTilt);
 card.addEventListener("mouseleave", resetTilt);
 card.addEventListener("mouseenter", handleTilt);
 
-// Matikan tilt di perangkat sentuh
 const hasTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 if (hasTouch){
   card.removeEventListener("mousemove", handleTilt);
   card.removeEventListener("mouseleave", resetTilt);
   resetTilt();
 }
-
-/* ====== (Opsional) Aksi tombol daftar ====== */
-// document.getElementById("btnDaftar").href = "https://wa.me/62XXXXXXXXXX?text=Halo admin, saya mau daftar Battle of Krezy";
