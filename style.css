@@ -204,6 +204,16 @@ body.popup-active .header {
   display: none;
 }
 
+/* Qris Dana */
+.qris-note {
+  color: #00faff;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.2rem;
+  text-shadow: 0 0 8px #00faff, 0 0 15px #0077ff;
+  margin: 10px 0;
+  text-align: center;
+}
+
 /* Footer */
 .footer {
   width: 100%;
