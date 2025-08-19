@@ -34,9 +34,25 @@ body{font-family:'Poppins',sans-serif;background:#0b1220;color:#eee;}
 .popup.closing .popup-inner{animation:zoomOut .3s ease forwards;}
 .popup-inner{position:relative;background:rgba(0,0,0,.6);padding:20px;border-radius:12px;box-shadow:0 0 20px cyan;animation:zoomIn .3s ease;}
 .popup-content{max-width:320px;border-radius:10px;}
-.new-close{position:absolute;top:10px;right:15px;font-size:26px;font-weight:bold;color:red;cursor:pointer;}
+
+/* Tombol X Merah */
+.new-close{
+  position:absolute;
+  top:10px;
+  right:15px;
+  font-size:26px;
+  font-weight:bold;
+  color:red;
+  cursor:pointer;
+  transition:.2s;
+}
+.new-close:hover{transform:scale(1.2);color:#ff4444;}
+
+/* Dana text */
 .dana-text{text-align:center;color:red;font-family:'Orbitron';font-weight:800;text-shadow:0 0 10px red;animation:blink .25s infinite alternate;margin:8px 0;}
 @keyframes blink{from{opacity:1;}to{opacity:.4;}}
+
+/* Animasi */
 @keyframes zoomIn{from{transform:scale(.8);opacity:0;}to{transform:scale(1);opacity:1;}}
 @keyframes zoomOut{from{transform:scale(1);opacity:1;}to{transform:scale(.8);opacity:0;}}
 
