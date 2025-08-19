@@ -2,12 +2,43 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:'Poppins',sans-serif;background:#0b1220;color:#eee;}
 
-/* Header */
-.header{position:sticky;top:0;width:100%;padding:12px 20px;display:flex;align-items:center;justify-content:center;background:rgba(0,10,20,.95);z-index:100;}
-.header-logo{position:absolute;left:20px;height:50px;filter:drop-shadow(0 0 8px cyan);}
-.header-text{text-align:center;}
-.title-esport{font-family:'Orbitron',sans-serif;font-size:2.5rem;background:linear-gradient(90deg,#00f6ff,#3b82f6,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 12px #00f6ff;}
-.subtitle{color:#aee4ff;font-size:.9rem;}
+/* ===== Header Fix ===== */
+.header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;   /* teks tetap center */
+  background: rgba(0,10,20,.95);
+  z-index: 100;
+}
+
+.header-logo {
+  margin-right: auto;  /* dorong logo ke kiri */
+  height: 50px;
+  filter: drop-shadow(0 0 8px cyan);
+}
+
+.header-text {
+  flex: 1;             /* ambil ruang sisa */
+  text-align: center;  /* pastikan teks center */
+}
+
+.title-esport {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.5rem;
+  background: linear-gradient(90deg,#00f6ff,#3b82f6,#8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 12px #00f6ff;
+}
+
+.subtitle {
+  color: #aee4ff;
+  font-size: .9rem;
+}
 
 /* Card */
 .event-container{margin:24px auto;padding:28px;background:rgba(17,24,39,.6);border-radius:22px;box-shadow:0 12px 30px rgba(0,0,0,.65);max-width:640px;}
