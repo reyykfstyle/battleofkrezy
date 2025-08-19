@@ -1,1 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BATTLE OF KREZY — Turnamen Free Fire</title>
 
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;800&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"/>
+
+  <!-- ✅ Preload gambar utama -->
+  <link rel="preload" as="image" href="https://raw.githubusercontent.com/reyykfstyle/battleofkrezy/5d770f7bdcd1469d9ac35ec859fb1a4defca4d19/1755606891774.png">
+  <link rel="preload" as="image" href="https://raw.githubusercontent.com/reyykfstyle/battleofkrezy/6e05a0320c20bcf9773c15f8f247c2b746fed7bc/20250819_193656.jpg">
+</head>
+<body>
+
+  <!-- HEADER -->
+<header class="header">
+  <!-- Logo -->
+  <img 
+    src="https://raw.githubusercontent.com/reyykfstyle/battleofkrezy/5d770f7bdcd1469d9ac35ec859fb1a4defca4d19/1755606891774.png"
+    alt="Logo Battle of Krezy" 
+    class="header-logo"
+    fetchpriority="high"
+    loading="eager"
+  >
+
+  <!-- Teks Judul -->
+  <div class="header-text">
+    <h1 class="title-esport">BATTLE OF KREZY</h1>
+    <p class="subtitle">FAST TOURNAMENT CLASH SQUAD</p>
+  </div>
+</header>
+
+  <!-- CARD 3D -->
+  <main class="event-container reveal-bottom" id="card3d">
+    <!-- Poster -->
+    <div class="poster-wrap reveal-right">
+      <img
+        src="https://raw.githubusercontent.com/reyykfstyle/battleofkrezy/6e05a0320c20bcf9773c15f8f247c2b746fed7bc/20250819_193656.jpg"
+        alt="Poster Battle of Krezy"
+        class="poster"
+        id="poster"
+        fetchpriority="high"
+        loading="eager"
+      />
+    </div>
+
+    <!-- Detail tengah menurun -->
+    <div class="details centered reveal-bottom">
+      <p>👥 <strong>Slot:</strong> 12 Tim</p>
+      <p>📅 <strong>Pelaksanaan:</strong> Setiap Hari</p>
+      <p>🏆 <strong>Prize Pool:</strong> Rp 110.000</p>
+      <p>💰 <strong>Biaya:</strong> Rp 10.000 / Tim</p>
+      <h3 class="call-to-action">AYO DAFTARKAN CIRCLE-MU SEKARANG!</h3>
+    </div>
+
+    <!-- Tombol -->
+    <div class="btn-group reveal-bottom">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdoJ4fTd8OinmyRcrNpScYiGCe8QG7bwN-ZwnWzLVyu_F7sTw/viewform" 
+         target="_blank" class="btn btn-daftar">DAFTAR</a>
+      <button class="btn btn-qris" id="qrisBtn">QRIS</button>
+    </div>
+  </main>
+
+  <!-- POPUP POSTER -->
+  <div id="popupPoster" class="popup">
+    <span class="close" data-close="poster">&times;</span>
+    <img class="popup-content" id="popupPosterImg" alt="Poster Full" loading="lazy"/>
+  </div>
+
+  <!-- POPUP QRIS -->
+  <div id="popupQris" class="popup">
+    <span class="close" data-close="qris">&times;</span>
+    <img class="popup-content"
+         id="qrisImg"
+         src="https://raw.githubusercontent.com/reyykfstyle/battleofkrezy/5d770f7bdcd1469d9ac35ec859fb1a4defca4d19/20250819_205735.jpg"
+         alt="QRIS Pembayaran"
+         loading="lazy"
+    />
+  </div>
+
+  <script src="script.js"></script>
+  
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-card">
+      <p class="copy">© 2025 Battle of Krezy</p>
+      <p class="hashtags">#BATTLEOFKREZY #FTCS #KREZY</p>
+      <p class="founder">Founder: @Kazy & @Rey</p>
+    </div>
+  </footer>
+  
+  <div class="overlay" id="overlay"></div>
+</body>
+</html>
