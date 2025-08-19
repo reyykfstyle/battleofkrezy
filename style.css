@@ -35,6 +35,25 @@ body{font-family:'Poppins',sans-serif;background:#0b1220;color:#eee;}
 .popup-inner{position:relative;background:rgba(0,0,0,.6);padding:20px;border-radius:12px;box-shadow:0 0 20px cyan;animation:zoomIn .3s ease;}
 .popup-content{max-width:320px;border-radius:10px;}
 
+/* Kotak popup */
+.popup-inner {
+  position: relative;
+  background: rgba(0,0,0,.6);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px cyan;
+  animation: zoomIn .3s ease;
+  max-width: 340px;   /* Biar popup nggak full layar */
+  width: 90%;         /* Responsif di HP */
+  text-align: center;
+}
+
+/* QR image */
+.qris-img {
+  width: 100%;        /* Biar ngepas kotaknya */
+  border-radius: 10px;
+}
+
 /* Tombol X Merah */
 .new-close{
   position:absolute;
