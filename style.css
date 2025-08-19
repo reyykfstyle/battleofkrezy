@@ -206,22 +206,22 @@ body.popup-active .header {
 
 /* Qris Dana */
 .qris-note {
+  font-family: 'Orbitron', sans-serif;  /* biar sama kayak BATTLE OF KREZY */
+  font-size: 1.4rem;
   color: #00faff;
-  font-family: 'Orbitron', sans-serif;
-  font-size: 1.3rem;
   text-align: center;
-  margin: 10px 0;
-  text-shadow: 0 0 8px #00faff, 0 0 15px #0077ff, 0 0 30px #00faff;
+  margin: 12px 0;
+  text-shadow: 0 0 10px #00faff, 0 0 20px #0077ff, 0 0 35px #00faff;
   animation: neonBlink 0.5s infinite alternate;
 }
 
 @keyframes neonBlink {
   from {
     opacity: 1;
-    text-shadow: 0 0 8px #00faff, 0 0 15px #0077ff, 0 0 30px #00faff;
+    text-shadow: 0 0 12px #00faff, 0 0 25px #0077ff, 0 0 40px #00faff;
   }
   to {
-    opacity: 0.6;
+    opacity: 0.3;
     text-shadow: 0 0 3px #0077ff, 0 0 8px #0044aa;
   }
 }
