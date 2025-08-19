@@ -32,43 +32,53 @@ body{font-family:'Poppins',sans-serif;background:#0b1220;color:#eee;}
 .popup{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);justify-content:center;align-items:center;z-index:2000;opacity:0;transition:.3s;}
 .popup.show{display:flex;opacity:1;}
 .popup.closing .popup-inner{animation:zoomOut .3s ease forwards;}
-.popup-inner{position:relative;background:rgba(0,0,0,.6);padding:20px;border-radius:12px;box-shadow:0 0 20px cyan;animation:zoomIn .3s ease;}
-.popup-content{max-width:320px;border-radius:10px;}
 
 /* Kotak popup */
-.popup-inner {
-  position: relative;
-  background: rgba(0,0,0,.6);
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 0 20px cyan;
-  animation: zoomIn .3s ease;
-  max-width: 340px;   /* Biar popup nggak full layar */
-  width: 90%;         /* Responsif di HP */
-  text-align: center;
+.popup-inner{
+  position:relative;
+  background:rgba(0,0,0,.6);
+  padding:20px;
+  border-radius:12px;
+  box-shadow:0 0 20px cyan;
+  animation:zoomIn .3s ease;
+  max-width:340px;   /* ✅ batas ukuran */
+  width:90%;         /* ✅ responsif */
+  text-align:center;
 }
 
-/* QR image */
-.qris-img {
-  width: 100%;        /* Biar ngepas kotaknya */
-  border-radius: 10px;
+/* QRIS Image */
+.qris-img{
+  width:100%;       /* ✅ otomatis ngepas kotak */
+  height:auto;
+  border-radius:10px;
 }
 
-/* Tombol X Merah */
-.new-close{
-  position:absolute;
-  top:10px;
-  right:15px;
-  font-size:26px;
-  font-weight:bold;
+/* Tombol X merah */
+.new-close {
+  position: absolute;
+  top: 8px;      /* ✅ pojok atas dalam card */
+  right: 10px;   /* ✅ pojok kanan dalam card */
+  font-size: 22px;
+  font-weight: bold;
+  color: red;
+  cursor: pointer;
+  transition: .2s;
+}
+.new-close:hover {
+  transform: scale(1.2);
+  color: #ff4444;
+}
+
+/* Dana Text */
+.dana-text{
+  text-align:center;
   color:red;
-  cursor:pointer;
-  transition:.2s;
+  font-family:'Orbitron';
+  font-weight:800;
+  text-shadow:0 0 10px red;
+  animation:blink .25s infinite alternate;
+  margin:8px 0;
 }
-.new-close:hover{transform:scale(1.2);color:#ff4444;}
-
-/* Dana text */
-.dana-text{text-align:center;color:red;font-family:'Orbitron';font-weight:800;text-shadow:0 0 10px red;animation:blink .25s infinite alternate;margin:8px 0;}
 @keyframes blink{from{opacity:1;}to{opacity:.4;}}
 
 /* Animasi */
