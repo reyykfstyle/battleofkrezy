@@ -8,23 +8,14 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;800&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css"/>
-
-  <!-- ✅ Preload gambar utama -->
-  <link rel="preload" as="image" href="1755606891774.png">
-  <link rel="preload" as="image" href="20250819_193656.jpg">
 </head>
 <body>
 
   <!-- HEADER -->
 <header class="header">
   <!-- Logo -->
-  <img 
-    src="1755606891774.png"
-    alt="Logo Battle of Krezy" 
-    class="header-logo"
-    fetchpriority="high"
-    loading="eager"
-  >
+  <img src="https://reyykfstyle.github.io/battleofkrezy/1755606891774.png"
+       alt="Logo Battle of Krezy" class="header-logo">
 
   <!-- Teks Judul -->
   <div class="header-text">
@@ -38,12 +29,10 @@
     <!-- Poster -->
     <div class="poster-wrap reveal-right">
       <img
-        src="20250819_193656.jpg"
+        src="https://reyykfstyle.github.io/battleofkrezy/20250819_193656.jpg"
         alt="Poster Battle of Krezy"
         class="poster"
         id="poster"
-        fetchpriority="high"
-        loading="eager"
       />
     </div>
 
@@ -58,8 +47,10 @@
 
     <!-- Tombol -->
     <div class="btn-group reveal-bottom">
-      <a href="https://forms.gle/yMjs3pmG8sNkN8XX7" 
-         target="_blank" class="btn btn-daftar">DAFTAR</a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdoJ4fTd8OinmyRcrNpScYiGCe8QG7bwN-ZwnWzLVyu_F7sTw/viewform" 
+         target="_blank" class="btn btn-daftar">
+        DAFTAR
+      </a>
       <button class="btn btn-qris" id="qrisBtn">QRIS</button>
     </div>
   </main>
@@ -67,44 +58,36 @@
   <!-- POPUP POSTER -->
   <div id="popupPoster" class="popup">
     <span class="close" data-close="poster">&times;</span>
-    <img class="popup-content" id="popupPosterImg" alt="Poster Full" loading="lazy"/>
+    <img class="popup-content" id="popupPosterImg" alt="Poster Full"/>
   </div>
-  
-<!-- POPUP QRIS -->
-<div id="popupQris" class="popup">
-  <span class="close" data-close="qris">&times;</span>
-  <div class="popup-inner">
-    
-    <!-- Tulisan Atas -->
-    <p class="dana-only">DANA ONLY!!</p>
 
-    <!-- QRIS -->
-    <img class="popup-content"
-         id="qrisImg"
-         src="20250819_205735.jpg"
-         alt="QRIS Pembayaran" />
-
-    <!-- Tulisan Bawah -->
-    <p class="dana-only">DANA ONLY!!</p>
+  <!-- POPUP QRIS -->
+  <div id="popupQris" class="popup">
+    <span class="close" data-close="qris">&times;</span>
+    <div class="popup-inner">
+      <p class="dana-only">DANA ONLY!!</p>
+      <img class="popup-content"
+           id="qrisImg"
+           src="https://reyykfstyle.github.io/battleofkrezy/20250819_205735.jpg"
+           alt="QRIS Pembayaran" />
+      <p class="dana-only">DANA ONLY!!</p>
+    </div>
   </div>
-</div>
 
-<!-- SFX -->
-<audio id="qrisSound" preload="auto">
-  <source src="https://raw.githubusercontent.com/reyykfstyle/battleofkrezy/87db622bb515da58368cb41ed4de3d4b2b7da78b/sfx.mp3" type="audio/mpeg">
-</audio>
-  
+  <!-- SFX -->
+  <audio id="qrisSound" preload="auto">
+    <source src="https://reyykfstyle.github.io/battleofkrezy/sfx.mp3" type="audio/mpeg">
+  </audio>
+
   <script src="script.js"></script>
   
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="footer-card">
-      <p class="copy">© 2025 Battle of Krezy</p>
-      <p class="hashtags">#BATTLEOFKREZY #FTCS #KREZY</p>
-      <p class="founder">Founder: @Kazy & @Rey</p>
-    </div>
-  </footer>
-  
-  <div class="overlay" id="overlay"></div>
+<footer class="footer">
+  <div class="footer-card">
+    <p class="copy">© 2025 Battle of Krezy</p>
+    <p class="hashtags">#BATTLEOFKREZY #FTCS #KREZY</p>
+    <p class="founder">Founder: @Kazy & @Rey</p>
+  </div>
+</footer>
+<div class="overlay" id="overlay"></div>
 </body>
 </html>
