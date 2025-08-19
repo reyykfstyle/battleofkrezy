@@ -167,49 +167,50 @@ body.popup-active .header {
 .btn-qris{ background:linear-gradient(90deg,#f59e0b,#ef4444); box-shadow:0 0 14px rgba(239,68,68,.55); }
 .btn-qris:hover{ transform:translateY(-3px) translateZ(6px); box-shadow:0 0 24px rgba(245,158,11,.9); filter:brightness(1.06); }
 
-/* Popups */
-.popup{
-  display:none; /* penting: hidden default */
-  position:fixed; inset:0; z-index:100;
-  background:rgba(0,0,0,.92);
-  justify-content:center; align-items:center;
+/* Popup base */
+.popup {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s ease;
+  opacity: 0;
 }
-.popup-content{
-  max-width:92%; max-height:84%; border-radius:14px; border:2px solid var(--neon);
-  animation:zoomFade .35s ease;
-  box-shadow:0 0 26px rgba(59,130,246,.8), 0 0 56px rgba(59,130,246,.5), 0 0 110px rgba(59,130,246,.35);
+.popup.show { 
+  display: flex;
+  opacity: 1; 
 }
-@keyframes zoomFade{ from{transform:scale(.72);opacity:0;} to{transform:scale(1);opacity:1;} }
-.close{
-  position:absolute; top:18px; right:28px; font-size:36px; color:#fff; cursor:pointer; font-weight:900;
-  transition:transform .2s, color .2s;
-}
-.close:hover{ color:var(--neon); transform:scale(1.18); }
 
-/* Reveal on scroll */
-.reveal, .reveal-left, .reveal-right, .reveal-bottom { opacity:0; transition:all .8s ease; }
-.reveal-bottom{ transform:translateY(40px); }
-.reveal-right{ transform:translateX(60px); }
-.reveal-bottom.active, .reveal-right.active{ opacity:1; transform:translate(0,0); }
-
-/* Biar konten popup rapih ke tengah */
+/* Kontainer isi popup */
 .popup-inner {
   display: flex;
-  flex-direction: column;   /* susun atas → QRIS → bawah */
-  align-items: center;      /* semua ditengah horizontal */
-  justify-content: center;
-  gap: 15px;                /* jarak antar elemen */
-  max-width: 90%;           /* biar ga mepet layar */
-  margin: auto;             /* pastikan kontainer ke tengah */
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  padding: 20px 30px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 12px;
+  box-shadow: 0 0 20px #00f7ff;
+  animation: zoomIn 0.3s ease;
 }
 
+@keyframes zoomIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+/* QRIS Image */
 .popup-content {
-  max-width: 320px;  /* batasi ukuran QRIS */
+  max-width: 320px;
   width: 100%;
-  height: auto;
   border-radius: 10px;
 }
 
+/* Tulisan "DANA ONLY!!" */
 .dana-only {
   font-family: 'Orbitron', sans-serif;
   font-size: 22px;
@@ -217,14 +218,20 @@ body.popup-active .header {
   color: #ff2e2e;
   text-align: center;
   text-shadow: 0 0 8px #ff0000, 0 0 16px #ff0000, 0 0 24px #ff0000;
-  animation: blinkGlow 0.3s infinite alternate;
+  animation: blinkGlow 0.25s infinite alternate;
 }
 
 @keyframes blinkGlow {
   from { opacity: 1; text-shadow: 0 0 8px #ff0000, 0 0 16px #ff0000; }
   to   { opacity: 0.4; text-shadow: 0 0 4px #ff0000; }
 }
-  
+
+/* Reveal on scroll */
+.reveal, .reveal-left, .reveal-right, .reveal-bottom { opacity:0; transition:all .8s ease; }
+.reveal-bottom{ transform:translateY(40px); }
+.reveal-right{ transform:translateX(60px); }
+.reveal-bottom.active, .reveal-right.active{ opacity:1; transform:translate(0,0); }
+
 /* Overlay */
 .overlay {
   position: fixed;
