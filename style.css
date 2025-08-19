@@ -189,6 +189,22 @@ body.popup-active .header {
 .popup.hide {
   opacity: 0;
 }
+.popup .close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 28px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  z-index: 1001;
+  transition: transform 0.2s ease;
+}
+
+.popup .close:hover {
+  transform: scale(1.2);
+  color: red;
+}
 
 /* Kontainer isi popup */
 .popup-inner {
