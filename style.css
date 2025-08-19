@@ -2,42 +2,60 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:'Poppins',sans-serif;background:#0b1220;color:#eee;}
 
-/* ===== Header Fix ===== */
+/* ===== Header Elegan ===== */
 .header {
+  width: 100%;
+  background: #0b0f1e; /* gelap elegan */
+  padding: 14px 20px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.8);
   position: sticky;
   top: 0;
-  width: 100%;
-  padding: 12px 20px;
+  z-index: 1000;
+  border-bottom: 2px solid rgba(0,255,255,0.25); /* garis glowing */
+}
+
+.header-container {
+  max-width: 1100px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: center;   /* teks tetap center */
-  background: rgba(0,10,20,.95);
-  z-index: 100;
+  justify-content: center;
+  gap: 16px;
+  position: relative;
 }
 
 .header-logo {
-  margin-right: auto;  /* dorong logo ke kiri */
-  height: 50px;
-  filter: drop-shadow(0 0 8px cyan);
+  height: 52px;
+  filter: drop-shadow(0 0 8px #00e5ff);
 }
 
 .header-text {
-  flex: 1;             /* ambil ruang sisa */
-  text-align: center;  /* pastikan teks center */
+  text-align: center;
 }
 
 .title-esport {
   font-family: 'Orbitron', sans-serif;
-  font-size: 2.5rem;
+  font-size: 2.2rem;
+  letter-spacing: 1px;
   background: linear-gradient(90deg,#00f6ff,#3b82f6,#8b5cf6);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 12px #00f6ff;
+  text-shadow: 0 0 14px #00f6ff;
 }
 
 .subtitle {
+  font-size: 0.85rem;
   color: #aee4ff;
-  font-size: .9rem;
+  letter-spacing: 1px;
+}
+
+/* Efek garis neon bawah */
+.header::after {
+  content: "";
+  display: block;
+  height: 3px;
+  background: linear-gradient(90deg,#00f6ff,#3b82f6,#8b5cf6);
+  box-shadow: 0 0 12px #00f6ff;
 }
 
 /* Card */
