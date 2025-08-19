@@ -294,6 +294,18 @@ body.popup-active .header {
   opacity: 0.8;
 }
 
+.footer-card a {
+  color: #00faff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.footer-card a:hover {
+  color: #ff2e2e;
+  text-shadow: 0 0 6px #ff2e2e, 0 0 12px #ff2e2e;
+}
+
 /* Responsive */
 @media (max-width: 600px){
   .header{ padding:22px 16px 8px; }
