@@ -11,10 +11,13 @@ const qrisSound = document.getElementById("qrisSound");
 qrisBtn.addEventListener("click", () => {
   // mainkan SFX
   qrisSound.currentTime = 0;
-  qrisSound.play();
+  qrisSound.play().catch(err => {
+    console.log("Audio gagal diputar:", err);
+  });
 
-  // tampilkan popup dengan animasi
-  popupQris.classList.add("show");
+  // tampilkan popup
+  popupQris.style.display = "flex";
+  setTimeout(() => popupQris.classList.add("show"), 10);
 });
 
 /* ====== Close popups ====== */
