@@ -6,6 +6,31 @@ const popupPosterImg = document.getElementById("popupPosterImg");
 /* ====== QRIS Popup ====== */
 const qrisBtn = document.getElementById("qrisBtn");
 const popupQris = document.getElementById("popupQris");
+const qrisSound = document.getElementById("qrisSound");
+
+qrisBtn.addEventListener("click", () => {
+  // mainkan SFX
+  qrisSound.currentTime = 0;
+  qrisSound.play();
+
+  // tampilkan popup dengan animasi
+  popupQris.classList.add("show");
+});
+
+/* ====== Close popups ====== */
+document.querySelectorAll(".close").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    popupQris.classList.remove("show");
+    setTimeout(() => popupQris.style.display = "none", 300); // sinkron fade-out
+  });
+});
+
+window.addEventListener("click", (e) => {
+  if (e.target === popupQris) {
+    popupQris.classList.remove("show");
+    setTimeout(() => popupQris.style.display = "none", 300);
+  }
+});
 
 /* ====== Overlay ====== */
 const overlay = document.getElementById("overlay");
