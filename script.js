@@ -11,53 +11,52 @@ const qrisSound = document.getElementById("qrisSound");
 /* ====== Overlay ====== */
 const overlay = document.getElementById("overlay");
 
-/* ====== Open Popup ====== */
-function openPopup(popup) {
-  popup.style.display = "flex";
-  overlay.style.display = "block";
-  setTimeout(() => popup.classList.add("show"), 10);
-}
-
-/* ====== Close Popup ====== */
-function closePopup(popup) {
-  popup.classList.remove("show");
-  popup.classList.add("hide");
-  setTimeout(() => {
-    popup.style.display = "none";
-    popup.classList.remove("hide");
-    overlay.style.display = "none";
-  }, 300); // sinkron dengan CSS transition
-}
-
-/* --- Poster --- */
-poster.addEventListener("click", () => {
-  popupPosterImg.src = poster.src;
-  openPopup(popupPoster);
-});
-
-/* --- QRIS --- */
+/* === QRIS tombol === */
 qrisBtn.addEventListener("click", () => {
-  // Play SFX
+  // mainkan SFX
   if (qrisSound) {
     qrisSound.currentTime = 0;
-    qrisSound.play().catch(err => console.log("Audio gagal play:", err));
+    qrisSound.play().catch(err => console.log("Audio gagal diputar:", err));
   }
-  openPopup(popupQris);
+
+  popupQris.style.display = "flex";
+  setTimeout(() => popupQris.classList.add("show"), 10);
+  overlay.style.display = "block";
 });
 
-/* --- Tombol Close (X) --- */
-document.querySelectorAll(".close").forEach(btn => {
+/* === Poster klik === */
+poster.addEventListener("click", () => {
+  popupPoster.style.display = "flex";
+  popupPosterImg.src = poster.src;
+  setTimeout(() => popupPoster.classList.add("show"), 10);
+  overlay.style.display = "block";
+});
+
+/* ====== Close popups ====== */
+document.querySelectorAll(".close").forEach((btn) => {
   btn.addEventListener("click", () => {
-    const target = btn.dataset.close;
-    if (target === "poster") closePopup(popupPoster);
-    if (target === "qris") closePopup(popupQris);
+    const popup = btn.closest(".popup");
+    popup.classList.remove("show");
+    popup.classList.add("closing");
+    setTimeout(() => {
+      popup.style.display = "none";
+      popup.classList.remove("closing");
+      overlay.style.display = "none";
+    }, 300); // durasi animasi zoomOut
   });
 });
 
-/* --- Klik luar popup --- */
-window.addEventListener("click", e => {
-  if (e.target === popupPoster) closePopup(popupPoster);
-  if (e.target === popupQris) closePopup(popupQris);
+/* klik luar popup */
+window.addEventListener("click", (e) => {
+  if (e.target.classList.contains("popup")) {
+    e.target.classList.remove("show");
+    e.target.classList.add("closing");
+    setTimeout(() => {
+      e.target.style.display = "none";
+      e.target.classList.remove("closing");
+      overlay.style.display = "none";
+    }, 300);
+  }
 });
 
 /* ====== Reveal on Scroll ====== */
@@ -70,23 +69,20 @@ const observer = new IntersectionObserver((entries)=> {
 },{ threshold: 0.18 });
 reveals.forEach((el)=> observer.observe(el));
 
-/* ====== 3D Tilt (tanpa ganggu tombol) ====== */
+/* ====== 3D Tilt ====== */
 const card = document.getElementById("card3d");
 let rAF = null;
 
 function handleTilt(e){
-  if (e.target.closest(".btn")) return; // biar tombol aman
-
+  if (e.target.closest(".btn")) return;
   const rect = card.getBoundingClientRect();
   const cx = rect.left + rect.width/2;
   const cy = rect.top + rect.height/2;
   const dx = e.clientX - cx;
   const dy = e.clientY - cy;
-
   const max = 4;
   const rotY = (dx / (rect.width/2)) * max;
   const rotX = (-dy / (rect.height/2)) * max;
-
   if (rAF) cancelAnimationFrame(rAF);
   rAF = requestAnimationFrame(() => {
     card.style.transform = `perspective(1000px) rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg)`;
@@ -96,7 +92,6 @@ function handleTilt(e){
        0 0 ${30 + Math.abs(rotX)*2}px rgba(56,189,248,0.24)`;
   });
 }
-
 function resetTilt(){
   if (rAF) cancelAnimationFrame(rAF);
   card.style.transform = "perspective(1000px) rotateX(2.2deg)";
