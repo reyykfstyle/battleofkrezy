@@ -195,10 +195,19 @@ body.popup-active .header {
 /* Biar konten popup rapih ke tengah */
 .popup-inner {
   display: flex;
-  flex-direction: column;   /* susun atas → tengah → bawah */
-  align-items: center;
+  flex-direction: column;   /* susun atas → QRIS → bawah */
+  align-items: center;      /* semua ditengah horizontal */
   justify-content: center;
-  gap: 12px; /* jarak antar elemen */
+  gap: 15px;                /* jarak antar elemen */
+  max-width: 90%;           /* biar ga mepet layar */
+  margin: auto;             /* pastikan kontainer ke tengah */
+}
+
+.popup-content {
+  max-width: 320px;  /* batasi ukuran QRIS */
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
 }
 
 .dana-only {
@@ -215,7 +224,7 @@ body.popup-active .header {
   from { opacity: 1; text-shadow: 0 0 8px #ff0000, 0 0 16px #ff0000; }
   to   { opacity: 0.4; text-shadow: 0 0 4px #ff0000; }
 }
-
+  
 /* Overlay */
 .overlay {
   position: fixed;
