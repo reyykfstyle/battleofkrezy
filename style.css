@@ -177,12 +177,17 @@ body.popup-active .header {
   background: rgba(0,0,0,0.8);
   justify-content: center;
   align-items: center;
-  transition: opacity 0.3s ease;
   opacity: 0;
+  transition: opacity 0.3s ease;  /* transisi fade */
 }
-.popup.show { 
+
+.popup.show {
   display: flex;
-  opacity: 1; 
+  opacity: 1;
+}
+
+.popup.hide {
+  opacity: 0;
 }
 
 /* Kontainer isi popup */
