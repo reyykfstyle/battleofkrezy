@@ -13,12 +13,10 @@ const overlay = document.getElementById("overlay");
 
 /* === QRIS tombol === */
 qrisBtn.addEventListener("click", () => {
-  // mainkan SFX
   if (qrisSound) {
     qrisSound.currentTime = 0;
     qrisSound.play().catch(err => console.log("Audio gagal diputar:", err));
   }
-
   popupQris.style.display = "flex";
   setTimeout(() => popupQris.classList.add("show"), 10);
   overlay.style.display = "block";
@@ -26,8 +24,8 @@ qrisBtn.addEventListener("click", () => {
 
 /* === Poster klik === */
 poster.addEventListener("click", () => {
-  popupPoster.style.display = "flex";
   popupPosterImg.src = poster.src;
+  popupPoster.style.display = "flex";
   setTimeout(() => popupPoster.classList.add("show"), 10);
   overlay.style.display = "block";
 });
@@ -42,11 +40,11 @@ document.querySelectorAll(".close").forEach((btn) => {
       popup.style.display = "none";
       popup.classList.remove("closing");
       overlay.style.display = "none";
-    }, 300); // durasi animasi zoomOut
+    }, 300);
   });
 });
 
-/* klik luar popup */
+/* Klik luar popup */
 window.addEventListener("click", (e) => {
   if (e.target.classList.contains("popup")) {
     e.target.classList.remove("show");
@@ -86,26 +84,11 @@ function handleTilt(e){
   if (rAF) cancelAnimationFrame(rAF);
   rAF = requestAnimationFrame(() => {
     card.style.transform = `perspective(1000px) rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg)`;
-    card.style.boxShadow =
-      `0 ${12 + Math.abs(rotX)*1.2}px ${30 + Math.abs(rotY)*2}px rgba(0,0,0,0.7),
-       inset 0 0 ${18 + Math.abs(rotY)}px rgba(99,102,241,0.22),
-       0 0 ${30 + Math.abs(rotX)*2}px rgba(56,189,248,0.24)`;
   });
 }
 function resetTilt(){
   if (rAF) cancelAnimationFrame(rAF);
   card.style.transform = "perspective(1000px) rotateX(2.2deg)";
-  card.style.boxShadow =
-    "0 12px 30px rgba(0,0,0,0.65), inset 0 0 18px rgba(99,102,241,0.18), 0 0 30px rgba(56,189,248,0.18)";
 }
-
 card.addEventListener("mousemove", handleTilt);
 card.addEventListener("mouseleave", resetTilt);
-card.addEventListener("mouseenter", handleTilt);
-
-const hasTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-if (hasTouch){
-  card.removeEventListener("mousemove", handleTilt);
-  card.removeEventListener("mouseleave", resetTilt);
-  resetTilt();
-}
